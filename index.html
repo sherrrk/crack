@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETERNIX</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: radial-gradient(circle at center, #0a0f1f 0%, #000 70%);
+    overflow-x: hidden;
+    color: white;
+    font-family: 'Noto Serif KR', serif;
+}
+
+/* 별 배경 */
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    opacity: 0.3;
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: 0.1; }
+    to { opacity: 0.8; }
+}
+
+/* 중앙 컨텐츠 */
+.container {
+    text-align: center;
+    padding-top: 20vh;
+}
+
+/* 북극성 */
+.polaris {
+    font-size: 40px;
+    animation: pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    from { opacity: 0.4; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1.2); }
+}
+
+/* 로고 */
+.logo {
+    margin-top: 40px;
+    width: 400px;
+    max-width: 80%;
+    filter: invert(1) brightness(2) drop-shadow(0 0 15px white);
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 2s;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* 태그라인 */
+.tagline {
+    margin-top: 30px;
+    font-family: 'Song Myung', serif;
+    font-size: 20px;
+    letter-spacing: 4px;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 3s;
+text-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+/* 트랙 */
+.tracks {
+    margin-top: 100px;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 4s;
+}
+
+.track {
+    margin: 40px 0;
+}
+
+audio {
+    width: 260px;
+    filter: invert(1);
+}
+
+.footer {
+    margin-top: 80px;
+    margin-bottom: 60px;  /* 👈 추가 */
+    font-size: 12px;
+    opacity: 0.4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="container">
+    <div class="polaris">✦</div>
+
+    <img src="logo.png" class="logo">
+
+    <div class="tagline">I'll AGAIN you <br><br> 이터닉스 타이틀곡</div>
+
+    <div class="tracks">
+        <div class="track">
+            <h2>01. Remember Me</h2>
+            <audio controls src="music1.mp3"></audio>
+        </div>
+
+        <div class="track">
+            <h2>02. Still Calling...</h2>
+            <audio controls src="music2.mp3"></audio>
+        </div>
+
+        <div class="track">
+            <h2>03. 나를 찾을 수 있게</h2>
+            <audio controls src="music3.mp3"></audio>
+        </div>
+    </div>
+
+    <div class="footer">Song By SUNO (Shrrk)</div>
+</div>
+
+<script>
+// 랜덤 별 생성
+const starsContainer = document.querySelector(".stars");
+for(let i = 0; i < 150; i++){
+    let star = document.createElement("div");
+    star.classList.add("star");
+    star.style.top = Math.random() * 100 + "%";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    starsContainer.appendChild(star);
+}
+</script>
+
+</body>
+</html>
